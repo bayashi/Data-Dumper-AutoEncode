@@ -1,5 +1,9 @@
 Revision history for Perl extension Data::Dumper::AutoEncode
 
+0.012   21:41 2011/12/18
+        [no code change]
+        fixed code encoding
+
 0.011   21:11 2011/12/18
         [no code change]
         added POD: description

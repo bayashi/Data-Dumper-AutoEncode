@@ -6,7 +6,7 @@ use Data::Recursive::Encode;
 use parent qw/Exporter/;
 our @EXPORT = qw/eDumper Dumper/;
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 sub _dump {
     my $d = Data::Dumper->new(\@_);
@@ -37,7 +37,7 @@ Data::Dumper::AutoEncode - Dump with recursive encoding
     use utf8;
     use Data::Dumper::AutoEncode;
 
-    eDumper(+{ foo => 'Ç®Ç≈ÇÒ' })
+    eDumper(+{ foo => '„Åä„Åß„Çì' })
 
 =head1 DESCRIPTION
 
@@ -48,7 +48,7 @@ example:
     use utf8;
     use Data::Dumper;
 
-    my $foo = +{ foo => 'Ç®Ç≈ÇÒ' };
+    my $foo = +{ foo => '„Åä„Åß„Çì' };
 
     print Dumper($foo);
 
@@ -63,10 +63,10 @@ Data::Dumper::AutoEncode exports `eDumper` function. You can use it.
     use utf8;
     use Data::Dumper::AutoEncode;
 
-    my $foo = +{ foo => 'Ç®Ç≈ÇÒ' };
+    my $foo = +{ foo => '„Åä„Åß„Çì' };
 
     print eDumper($foo);
-    # { foo => "Ç®Ç≈ÇÒ" }
+    # { foo => "„Åä„Åß„Çì" }
 
 Also `Dumper` function is exported from Data::Dumper::AutoEncode. It is same as Data::Dumper::Dumper
 
