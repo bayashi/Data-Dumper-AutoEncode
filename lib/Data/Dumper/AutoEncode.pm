@@ -10,6 +10,8 @@ our $VERSION = '0.100';
 
 our $ENCODING = '';
 
+our $ENCODING = '';
+
 sub _dump {
     my $d = Data::Dumper->new(\@_);
     return $d->Dump;
