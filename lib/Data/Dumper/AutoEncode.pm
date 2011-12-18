@@ -8,17 +8,19 @@ our @EXPORT = qw/eDumper Dumper/;
 
 our $VERSION = '0.012';
 
+our $ENCODING = '';
+
 sub _dump {
     my $d = Data::Dumper->new(\@_);
     return $d->Dump;
 }
 
 sub eDumper {
-    my ($ref, $enc) = @_;
-
-    _dump(
-        Data::Recursive::Encode->encode($enc || 'utf8', $ref)
-    );
+    my @args;
+    for my $arg (@_) {
+        push @args, Data::Recursive::Encode->encode($ENCODING || 'utf8', $arg);
+    }
+    _dump(@args);
 }
 
 1;
@@ -75,9 +77,13 @@ Also `Dumper` function is exported from Data::Dumper::AutoEncode. It is same as 
 
 =over
 
-=item eDumper($dump_target_ref [, $encoding])
+=item eDumper(LIST)
 
 Dump with recursive encoding(default: utf8)
+
+If you want to encode other encoding, set encoding to $Data::Dumper::AutoEncode::ENCODING.
+
+    $Data::Dumper::AutoEncode::ENCODING = 'CP932';
 
 =item Dumper(LIST)
 
