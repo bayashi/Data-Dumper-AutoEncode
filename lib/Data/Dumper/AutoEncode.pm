@@ -37,18 +37,45 @@ Data::Dumper::AutoEncode - Dump with recursive encoding
     use utf8;
     use Data::Dumper::AutoEncode;
 
-    eDumper(+{ foo => 'ラリー・ウォール' })
+    eDumper(+{ foo => 'おでん' })
 
 =head1 DESCRIPTION
 
-Data::Dumper::AutoEncode is 
+Data::Dumper::AutoEncode stringifies perl data structures including unicode string to human-readable.
+
+example:
+
+    use utf8;
+    use Data::Dumper;
+
+    my $foo = +{ foo => 'おでん' };
+
+    print Dumper($foo);
+
+It will dump like this
+
+    { foo => "\x{304a}\x{3067}\x{3093}" }
+
+This is not human-readable.
+
+Data::Dumper::AutoEncode exports `eDumper` function. You can use it.
+
+    use utf8;
+    use Data::Dumper::AutoEncode;
+
+    my $foo = +{ foo => 'おでん' };
+
+    print eDumper($foo);
+    # { foo => "おでん" }
+
+Also `Dumper` function is exported from Data::Dumper::AutoEncode. It is same as Data::Dumper::Dumper
 
 
 =head1 METHOD
 
 =over
 
-=item eDumper($dump_target_ref, $encoding)
+=item eDumper($dump_target_ref [, $encoding])
 
 Dump with recursive encoding(default: utf8)
 
