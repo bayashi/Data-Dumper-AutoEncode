@@ -1,5 +1,9 @@
 Revision history for Perl extension Data::Dumper::AutoEncode
 
+0.102   19:34 2011/12/20
+        [no code change]
+        added dependent module: parent
+
 0.101   22:46 2011/12/18
         ooooooops, missed merge. removed duplicate variable.
 

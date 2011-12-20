@@ -12,6 +12,7 @@ my $builder = Module::Build->new(
         'Encode' => 0,
     },
     requires => {
+        'parent' => 0,
         'Data::Dumper' => 0,
         'Data::Recursive::Encode' => 0,
         'Exporter' => 0,
