@@ -21,6 +21,7 @@
 ^[^/]+\.yaml$
 ^[^/]+\.pl$
 ^\.shipit$
+^\.travis\.yml$
 ^\.git/
 \.sw[po]$
 ^MYMETA.yml$

@@ -3,6 +3,12 @@
 
 This is Perl module B<Data::Dumper::AutoEncode>.
 
+=begin html
+
+<a href="http://travis-ci.org/bayashi/Data-Dumper-AutoEncode"><img src="https://secure.travis-ci.org/bayashi/Data-Dumper-AutoEncode.png"/></a>
+
+=end html
+
 
 =head1 INSTALLATION
 

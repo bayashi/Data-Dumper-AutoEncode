@@ -1,0 +1,12 @@
+language: perl
+perl:
+  - "5.16"
+  - "5.14"
+  - "5.12"
+  - "5.10"
+notifications:
+  irc:
+    channels:
+      - "irc.freenode.net#bayadev"
+    on_success: change
+    on_failure: always

@@ -1,25 +1,29 @@
 Revision history for Perl extension Data::Dumper::AutoEncode
 
-0.102   19:34 2011/12/20
+0.103   Sun Oct 14 15:50:00 JST 2012
+        [no code change]
+        fixed for kwalitee
+
+0.102   Tue Dec 20 19:03:00 JST 2011
         [no code change]
         added dependent module: parent
 
-0.101   22:46 2011/12/18
+0.101   Sun Dec 18 22:04:00 JST 2011
         ooooooops, missed merge. removed duplicate variable.
 
-0.100   22:30 2011/12/18
+0.100   Sun Dec 18 22:03:00 JST 2011
         [Note: this is an IMCOMPATIBLE CHANGE]
         changed interface of `eDumper` method. be same as `Dumper`
             fixed document
             added(changed) tests
 
-0.012   21:41 2011/12/18
+0.012   Sun Dec 18 21:04:00 JST 2011
         [no code change]
         fixed code encoding
 
-0.011   21:11 2011/12/18
+0.011   Sun Dec 18 21:01:00 JST 2011
         [no code change]
         added POD: description
 
-0.01    Sun Dec 18 12:16:13 2011
+0.01    Sun Dec 18 12:16:13 JST 2011
         - original version
