@@ -7,6 +7,9 @@ my $builder = Module::Build->new(
     license             => 'perl',
     dist_author         => 'Dai Okabayashi <bayashi@cpan.org>',
     dist_version_from   => 'lib/Data/Dumper/AutoEncode.pm',
+    configure_requires  => {
+        'Module::Build' => 0.38,
+    },
     build_requires      => {
         'Test::More' => 0.88,
         'Encode' => 0,
@@ -17,6 +20,9 @@ my $builder = Module::Build->new(
         'Data::Dumper' => 0,
         'Data::Recursive::Encode' => 0,
         'Exporter' => 0,
+    },
+    recommends => {
+        'IO::Interactive::Tiny' => 0,
     },
     script_files        => [ 'script/edumper' ],
     add_to_cleanup      => [ 'Data-Dumper-AutoEncode-*' ],
