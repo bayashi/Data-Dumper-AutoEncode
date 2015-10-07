@@ -1,0 +1,20 @@
+#!perl
+use strict;
+use warnings;
+use IO::Interactive::Tiny;
+use Data::Dumper::AutoEncode;
+
+unless ( IO::Interactive::Tiny::is_interactive(*STDIN) ) {
+    my $dump_str = join '', <STDIN>;
+
+    my $dump_var;
+    {
+        no strict 'vars';
+        $dump_var = eval $dump_str;
+        if (my $e = $@) {
+            die "$e\n";
+        }
+    }
+
+    print eDumper($dump_var);
+}

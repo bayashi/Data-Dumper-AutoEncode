@@ -18,6 +18,7 @@ my $builder = Module::Build->new(
         'Data::Recursive::Encode' => 0,
         'Exporter' => 0,
     },
+    script_files        => [ 'script/edumper' ],
     add_to_cleanup      => [ 'Data-Dumper-AutoEncode-*' ],
     meta_merge     => {
       resources => {
