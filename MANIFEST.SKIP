@@ -24,4 +24,8 @@
 ^\.travis\.yml$
 ^\.git/
 \.sw[po]$
-^MYMETA.yml$
+^MYMETA\.*$
+^META\.yml$
+^MYMETA\.yml$
+^MYMETA\.json$
+^edumper$
