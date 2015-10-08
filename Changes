@@ -2,7 +2,7 @@ Revision history for Perl extension Data::Dumper::AutoEncode
 
 0.104   Thu Oct  8 09:35:49 JST 2015
         [no code change]
-        add the `edumper` script for unescape string which was unescaped by Data::Dumper
+        add the `edumper` script for unescaping string which was escaped by Data::Dumper
 
 0.103   Sun Oct 14 15:50:00 JST 2012
         [no code change]
