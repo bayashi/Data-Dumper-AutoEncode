@@ -16,6 +16,7 @@ sub _dump {
 }
 
 sub eDumper {
+    local $Data::Recursive::Encode::DO_NOT_PROCESS_NUMERIC_VALUE = 1;
     my @args;
     for my $arg (@_) {
         push @args, Data::Recursive::Encode->encode($ENCODING || 'utf8', $arg);

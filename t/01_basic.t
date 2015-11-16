@@ -38,4 +38,12 @@ use Encode qw//;
     like eDumper($decoded_str), qr/\$VAR1.+/, 'eDumper CP932';
 }
 
+{
+    like(
+        eDumper({ foo => 123 }),
+        qr/'foo' => 123/,
+        'numeric value'
+    );
+}
+
 done_testing;
