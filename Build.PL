@@ -18,7 +18,7 @@ my $builder = Module::Build->new(
         'perl' => '5.8.1',
         'parent' => 0,
         'Data::Dumper' => 0,
-        'Data::Recursive::Encode' => 0,
+        'Data::Recursive::Encode' => 0.05,
         'Exporter' => 0,
     },
     recommends => {

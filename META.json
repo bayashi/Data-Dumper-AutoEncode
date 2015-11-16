@@ -31,7 +31,7 @@
          },
          "requires" : {
             "Data::Dumper" : "0",
-            "Data::Recursive::Encode" : "0",
+            "Data::Recursive::Encode" : "0.05",
             "Exporter" : "0",
             "parent" : "0",
             "perl" : "v5.8.1"
@@ -41,7 +41,7 @@
    "provides" : {
       "Data::Dumper::AutoEncode" : {
          "file" : "lib/Data/Dumper/AutoEncode.pm",
-         "version" : "0.104"
+         "version" : "0.105"
       }
    },
    "release_status" : "stable",
@@ -53,6 +53,6 @@
          "url" : "http://github.com/bayashi/Data-Dumper-AutoEncode"
       }
    },
-   "version" : "0.104",
+   "version" : "0.105",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }
