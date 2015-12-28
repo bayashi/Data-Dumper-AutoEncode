@@ -1,5 +1,8 @@
 Revision history for Perl extension Data::Dumper::AutoEncode
 
+0.107   Mon Dec 28 18:54:12 JST 2015
+        add POD for edumper script
+
 0.106   Tue Nov 17 17:14:41 JST 2015
         fix to treate a numeric value correctly
         fix packaging
