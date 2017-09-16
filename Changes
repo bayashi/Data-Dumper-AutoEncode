@@ -1,5 +1,9 @@
 Revision history for Perl extension Data::Dumper::AutoEncode
 
+0.2     Sat Sep 16 14:54:30 JST 2017
+        by default `CHECK_ALREADY_ENCODED` is set 0
+        [WARNING]: version 0.2 and 0.108 have a bug. Don't use it.
+
 0.2     Sat Sep 16 13:20:30 JST 2017
         add FLAG_STR
 
