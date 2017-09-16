@@ -9,7 +9,7 @@ use Data::Dumper; # Dumper
 use parent qw/Exporter/;
 our @EXPORT = qw/eDumper Dumper/;
 
-our $VERSION = '0.108';
+our $VERSION = '0.2';
 
 our $ENCODING = '';
 our $CHECK_ALREADY_ENCODED = 1;
