@@ -12,7 +12,7 @@ our @EXPORT = qw/eDumper Dumper/;
 our $VERSION = '0.2';
 
 our $ENCODING = '';
-our $CHECK_ALREADY_ENCODED = 1;
+our $CHECK_ALREADY_ENCODED = 0;
 our $DO_NOT_PROCESS_NUMERIC_VALUE = 1;
 our $FLAG_STR = '';
 
@@ -96,8 +96,10 @@ sub _can_exec {
     my ($arg) = @_;
 
     return unless defined($arg);
-    return 1 if ( !$DO_NOT_PROCESS_NUMERIC_VALUE || !_is_number($arg) )
-                    && ( $CHECK_ALREADY_ENCODED && Encode::is_utf8($arg) );
+    return if $DO_NOT_PROCESS_NUMERIC_VALUE && _is_number($arg);
+    return 1 if Encode::is_utf8($arg);
+    return 1 if !$CHECK_ALREADY_ENCODED && !Encode::is_utf8($arg);
+
     return;
 }
 
