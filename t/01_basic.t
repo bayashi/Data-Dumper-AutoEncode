@@ -52,4 +52,10 @@ use Encode qw//;
     like $ret, qr/エベレストは世界一の山/, 'ex encoded';
 }
 
+{
+    local $Data::Dumper::AutoEncode::FLAG_STR = 'auto_encoded:';
+    is eDumper(Encode::decode_utf8('富士は日本一の山')), q|$VAR1 = 'auto_encoded:富士は日本一の山';|."\n", 'FLAG_STR';
+    is eDumper('富士は日本一の山'), q|$VAR1 = '富士は日本一の山';|."\n", 'No FLAG_STR';
+}
+
 done_testing;

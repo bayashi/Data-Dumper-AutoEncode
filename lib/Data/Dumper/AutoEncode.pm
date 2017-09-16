@@ -14,6 +14,7 @@ our $VERSION = '0.108';
 our $ENCODING = '';
 our $CHECK_ALREADY_ENCODED = 1;
 our $DO_NOT_PROCESS_NUMERIC_VALUE = 1;
+our $FLAG_STR = '';
 
 sub _dump {
     my $d = Data::Dumper->new(\@_);
@@ -69,7 +70,12 @@ sub _apply {
             push @retval, $proto;
         }
         else{
-            push @retval, _can_exec($arg) ? $code->($arg) : $arg;
+            if (_can_exec($arg)) {
+                push @retval, $FLAG_STR ? $FLAG_STR . $code->($arg) : $code->($arg);
+            }
+            else {
+                push @retval, $arg;
+            }
         }
     }
 
