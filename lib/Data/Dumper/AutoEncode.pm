@@ -192,6 +192,10 @@ same as Data::Dumper::Dumper
 
 =head1 OPTIONS
 
+=head2 ENCODING : utf8
+
+Set this option if you need another encoding;
+
 =head2 BEFORE_HOOK / AFTER_HOOK
 
 Set code ref for hooks which excuted around encoding
@@ -207,6 +211,18 @@ Set code ref for hooks which excuted around encoding
         // do something
         return $value;
     };
+
+=head2 CHECK_ALREADY_ENCODED : false
+
+If you set this option true value, check a target before encoding. And do encode in case of decoded value.
+
+=head2 DO_NOT_PROCESS_NUMERIC_VALUE : true
+
+By default, numeric values are ignored (do nothing).
+
+=head2 FLAG_STR
+
+Additional string (prefix) for encoded values.
 
 =head1 REPOSITORY
 
