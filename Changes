@@ -1,6 +1,11 @@
 Revision history for Perl extension Data::Dumper::AutoEncode
 
-0.2     Sat Sep 16 14:54:30 JST 2017
+0.4     Sun Jul 29 07:53:56 UTC 2018
+        Fix pod
+        Add hook options
+        Fix .travis.yml
+
+0.3     Sat Sep 16 14:54:30 JST 2017
         by default `CHECK_ALREADY_ENCODED` is set 0
         [WARNING]: version 0.2 and 0.108 have a bug. Don't use it.
 
