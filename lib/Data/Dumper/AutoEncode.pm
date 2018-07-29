@@ -16,6 +16,9 @@ our $CHECK_ALREADY_ENCODED = 0;
 our $DO_NOT_PROCESS_NUMERIC_VALUE = 1;
 our $FLAG_STR = '';
 
+our $BEFORE_HOOK;
+our $AFTER_HOOK;
+
 sub _dump {
     my $d = Data::Dumper->new(\@_);
     return $d->Dump;
@@ -71,7 +74,7 @@ sub _apply {
         }
         else{
             if (_can_exec($arg)) {
-                push @retval, $FLAG_STR ? $FLAG_STR . $code->($arg) : $code->($arg);
+                push @retval, $FLAG_STR ? $FLAG_STR . _exec($code, $arg) : _exec($code, $arg);
             }
             else {
                 push @retval, $arg;
@@ -80,6 +83,22 @@ sub _apply {
     }
 
     return wantarray ? @retval : $retval[0];
+}
+
+sub _exec {
+    my ($code, $arg) = @_;
+
+    if (ref $BEFORE_HOOK eq 'CODE') {
+        $arg = $BEFORE_HOOK->($arg);
+    }
+
+    my $result = $code->($arg);
+
+    if (ref $AFTER_HOOK eq 'CODE') {
+        return $AFTER_HOOK->($result);
+    }
+
+    return $result;
 }
 
 # copied from Data::Recursive::Encode
@@ -170,6 +189,24 @@ If you want to encode other encoding, set encoding to $Data::Dumper::AutoEncode:
 same as Data::Dumper::Dumper
 
 =back
+
+=head1 OPTIONS
+
+=head2 BEFORE_HOOK / AFTER_HOOK
+
+Set code ref for hooks which excuted around encoding
+
+    $Data::Dumper::AutoEncode::BEFORE_HOOK = sub {
+        my $value = $_[0]; # decoded
+        $value =~ s/\x{2019}/'/g;
+        return $value;
+    };
+
+    $Data::Dumper::AutoEncode::AFTER_HOOK = sub {
+        my $value = $_[0]; # encoded
+        // do something
+        return $value;
+    };
 
 =head1 REPOSITORY
 
