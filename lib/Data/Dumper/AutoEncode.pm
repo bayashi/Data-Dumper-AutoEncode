@@ -174,7 +174,7 @@ same as Data::Dumper::Dumper
 =head1 REPOSITORY
 
 Data::Dumper::AutoEncode is hosted on github
-<http://github.com/bayashi/Data-Dumper-AutoEncode>
+L<http://github.com/bayashi/Data-Dumper-AutoEncode>
 
 
 =head1 AUTHOR
