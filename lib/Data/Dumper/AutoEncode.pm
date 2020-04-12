@@ -7,7 +7,7 @@ use Scalar::Util qw(blessed refaddr);
 use B;
 use Data::Dumper; # Dumper
 
-our $VERSION = '0.99';
+our $VERSION = '1.00';
 
 our $ENCODING = '';
 our $CHECK_ALREADY_ENCODED = 0;
