@@ -6,8 +6,6 @@ use Encode ();
 use Scalar::Util qw(blessed refaddr);
 use B;
 use Data::Dumper; # Dumper
-use parent qw/Exporter/;
-our @EXPORT = qw/eDumper Dumper/;
 
 our $VERSION = '0.99';
 
@@ -18,6 +16,27 @@ our $FLAG_STR = '';
 
 our $BEFORE_HOOK;
 our $AFTER_HOOK;
+
+sub import {
+    my $class = shift;
+    my %args = map { $_ => 1 } @_;
+
+    if (delete $args{'-dumper'}) {
+        no strict 'refs'; ## no critic
+        *{__PACKAGE__."::Dumper"} = *{__PACKAGE__."::eDumper"};
+    }
+
+    my $export_all = !!(scalar(keys %args) == 0);
+
+    my $pkg = caller;
+
+    for my $f (qw/ Dumper eDumper /) {
+        if ( $export_all || (exists $args{$f} && $args{$f}) ) {
+            no strict 'refs'; ## no critic
+            *{"${pkg}::${f}"} = \&{$f};
+        }
+    }
+}
 
 sub _dump {
     my $d = Data::Dumper->new(\@_);
@@ -174,6 +193,8 @@ Also `Dumper` function is exported from Data::Dumper::AutoEncode. It is same as 
 
 =head1 METHOD
 
+By default, both functions B<eDumper> and B<Dumper> will be exported.
+
 =over
 
 =item eDumper(LIST)
@@ -186,15 +207,23 @@ If you want to encode other encoding, set encoding to $Data::Dumper::AutoEncode:
 
 =item Dumper(LIST)
 
-same as Data::Dumper::Dumper
+Same as the C<Dumper> function of L<Data::Dumper>. However, if you specify an import option C<-dumper>, then the C<Dumper> function will work as same as C<eDumper> function. Please see C<IMPORT OPTIONS> section for more details.
 
 =item encode($encoding, $stuff)
 
-encode stuff.
+Just encode stuff.
 
 =back
 
-=head1 OPTIONS
+=head1 IMPORT OPTIONS
+
+You can specify an import option to override C<Dumper> function.
+
+    use Data::Dumper::AutoEncode '-dumper';
+
+It means C<Dumper> function is overrided as same as eDumper.
+
+=head1 GLOBAL VARIABLE OPTIONS
 
 =head2 ENCODING : utf8
 
