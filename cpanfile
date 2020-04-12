@@ -4,7 +4,6 @@ requires 'perl', '5.008005';
 requires 'strict';
 requires 'warnings';
 requires 'parent';
-requires 'Exporter';
 requires 'B';
 requires 'Carp';
 requires 'Encode';
