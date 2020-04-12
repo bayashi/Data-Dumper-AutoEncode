@@ -223,6 +223,7 @@ You can specify an import option to override C<Dumper> function.
 
 It means C<Dumper> function is overrided as same as eDumper.
 
+
 =head1 GLOBAL VARIABLE OPTIONS
 
 =head2 ENCODING : utf8
@@ -256,6 +257,20 @@ By default, numeric values are ignored (do nothing).
 =head2 FLAG_STR
 
 Additional string (prefix) for encoded values.
+
+
+=head1 HOW TO SET CONFIGURATION VARIABLES TO DUMP
+
+This C<Data::Dumper::AutoEncode> is using L<Data::Dumper> internally. So, you can set configuration variables to dump as the variables of Data::Dumper, like below.
+
+    use Data::Dumper::AutoEncode;
+
+    local $Data::Dumper::Indent   = 2;
+    local $Data::Dumper::Sortkeys = 1;
+    local $Data::Dumper::Deparse  = 1;
+
+    say eDumper($hash);
+
 
 =head1 REPOSITORY
 
