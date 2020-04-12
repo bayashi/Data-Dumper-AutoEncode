@@ -9,7 +9,7 @@ use Data::Dumper; # Dumper
 use parent qw/Exporter/;
 our @EXPORT = qw/eDumper Dumper/;
 
-our $VERSION = '0.4';
+our $VERSION = '0.99';
 
 our $ENCODING = '';
 our $CHECK_ALREADY_ENCODED = 0;
@@ -187,6 +187,10 @@ If you want to encode other encoding, set encoding to $Data::Dumper::AutoEncode:
 =item Dumper(LIST)
 
 same as Data::Dumper::Dumper
+
+=item encode($encoding, $stuff)
+
+encode stuff.
 
 =back
 

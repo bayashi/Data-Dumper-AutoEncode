@@ -1,0 +1,46 @@
+name: linux_old_versions
+
+on:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - '*'
+  pull_request:
+    branches:
+      - '!bump-version'
+      - '!bump_version'
+      - '!doc?'
+      - '!pod'
+
+jobs:
+  perl:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        perl-version:
+          - '5.8'
+          - '5.18'
+          - '5.28'
+          - 'latest'
+
+    container:
+      image: perl:${{ matrix.perl-version }}
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: perl -V
+        run: perl -V
+      - name: Install dependencies
+        run: curl -sL https://git.io/cpm | perl - install -g --with-recommends --with-test --with-configure --show-build-log-on-failure
+        if: matrix.perl-version == '5.8'
+      - name: Install dependencies With develop
+        run: curl -sL https://git.io/cpm | perl - install -g --with-recommends --with-test --with-configure --with-develop --show-build-log-on-failure
+        if: matrix.perl-version != '5.8'
+      - name: Run build
+        run: perl Build.PL
+      - name: Build manifest
+        run: ./Build manifest
+      - name: Run test
+        run: ./Build test

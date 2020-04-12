@@ -9,9 +9,12 @@
 ^blib/
 ^_build/
 ^cover_db/
+^local/
+^extlib/
 ^pm_to_blib
 ^MakeMaker-\d
 \.gz$
+\.github
 \.gitignore
 \.cvsignore
 ^t/9\d_.*\.t
@@ -28,4 +31,4 @@
 ^META\.yml$
 ^MYMETA\.yml$
 ^MYMETA\.json$
-^edumper$
+^Data-Dumper-AutoEncode-*
