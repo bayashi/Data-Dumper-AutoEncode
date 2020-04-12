@@ -188,6 +188,10 @@ If you want to encode other encoding, set encoding to $Data::Dumper::AutoEncode:
 
 same as Data::Dumper::Dumper
 
+=item encode($encoding, $stuff)
+
+encode stuff.
+
 =back
 
 =head1 OPTIONS
